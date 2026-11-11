@@ -60,9 +60,12 @@ Claude Code처럼 Grep·Glob·Read로 파일을 찾아가는 에이전트가, �
 python -m ase.agent --model haiku --variant upto5 --runs 3   # → runs/haiku-upto5/
 python -m ase.score --model haiku-upto5
 python -m ase.followup                                       # → results/followup.json
+python -m ase.chart_followup                                 # → results/followup_vs_bm25.png
 ```
 
 ### 후속 실험 결과 (2026-11-11, results/followup.json)
+
+![고른 파일에 BM25로 5개까지 채우면 Sonnet은 앞서고 Haiku는 경계선](results/followup_vs_bm25.png)
 
 | arm | Submit-Recall | Precision | 평균 제출 수 | − BM25 상위 5개 (95% 구간) |
 |---|---|---|---|---|
