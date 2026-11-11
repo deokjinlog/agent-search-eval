@@ -71,6 +71,7 @@ def agent_stats(golden: dict, bm25: dict, rows: list[dict]) -> dict:
             "sr_runs": [r["submit_recall"] for r in sorted(a, key=lambda r: r["run"])],
             "precision": mean(r["precision"] for r in a),
             "read_recall": mean(r["read_recall"] for r in a),
+            "grep_recall": mean(r["grep_recall"] for r in a),
             "submitted": mean(len(r["submitted"]) for r in a),
             "tokens_sum": mean(r["input_tokens_sum"] for r in a),
             "tokens_max": mean(r["input_tokens_max"] for r in a),
@@ -94,6 +95,8 @@ def agent_stats(golden: dict, bm25: dict, rows: list[dict]) -> dict:
         "submit_recall_run_std": st.stdev(run_means) if len(run_means) > 1 else 0.0,
         "precision": mean(p["precision"] for p in per_q.values()),
         "read_recall": mean(p["read_recall"] for p in per_q.values()),
+        "grep_recall": mean(p["grep_recall"] for p in per_q.values()),
+        "grep_files_listed_median": st.median(r["grep_files_listed"] for r in rows),
         "submitted_mean": mean(p["submitted"] for p in per_q.values()),
         "submitted_dist": dict(sorted(Counter(len(r["submitted"]) for r in rows).items())),
         "empty_submissions": sum(1 for r in rows if not r["submitted"]),
@@ -149,7 +152,7 @@ def main(argv=None) -> int:
         t, mt = a["vs_bm25_top5"], a["vs_bm25_matched"]
         print(f"[{m}] 실행 {a['runs']}번  Submit-Recall {a['submit_recall']:.3f} "
               f"(실행별 {', '.join(f'{x:.3f}' for x in a['submit_recall_by_run'])}, 표준편차 {a['submit_recall_run_std']:.3f})  "
-              f"Precision {a['precision']:.3f}  Read-Recall {a['read_recall']:.3f}  제출 {a['submitted_mean']:.2f}개")
+              f"Precision {a['precision']:.3f}  Read-Recall {a['read_recall']:.3f}  Grep-Recall {a['grep_recall']:.3f}  제출 {a['submitted_mean']:.2f}개  Grep이 보여 준 파일 수 중앙값 {a['grep_files_listed_median']}")
         print(f"    vs BM25 top5    {t['mean']:+.3f} [{t['ci95'][0]:+.3f}, {t['ci95'][1]:+.3f}]  이김 {t['wins']} 비김 {t['ties']} 짐 {t['losses']}")
         print(f"    vs BM25 같은 개수 {mt['mean']:+.3f} [{mt['ci95'][0]:+.3f}, {mt['ci95'][1]:+.3f}]  이김 {mt['wins']} 비김 {mt['ties']} 짐 {mt['losses']}"
               f"  (BM25 같은 개수 recall {a['bm25_matched_recall']:.3f})")

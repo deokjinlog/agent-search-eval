@@ -2,6 +2,7 @@
 
 - 제출: 마지막 답에서 찾은 마지막 JSON 배열
 - Read-Recall: Read 도구로 한 번이라도 연 파일 기준
+- Grep-Recall: 정답 파일 경로가 Grep 결과에 한 번이라도 나온 비율 (Glob 목록은 빼고 셈)
 - Submit-Recall, Precision: 제출 기준
 - 토큰: 호출(assistant 메시지 id)마다 input 합계 = input_tokens + cache_creation + cache_read
 - 검색어 출처: 정답 파일을 처음 읽기 직전의 Grep/Glob 패턴이
@@ -25,6 +26,12 @@ from .common import ROOT, SNAPSHOTS, load_golden, precision, recall
 
 RUNS_DIR = ROOT / "runs"
 WORD = re.compile(r"[A-Za-z][A-Za-z0-9_]+|[가-힣]{2,}")
+PATH_LINE = re.compile(r"^[\w./-]+\.[A-Za-z0-9]+(:|$)")
+
+
+def path_listed(path: str, text: str) -> bool:
+    """도구 결과 텍스트에 이 상대경로가 한 줄의 경로로 나왔는가 (files_with_matches 목록, path:line 형식)."""
+    return re.search(r"(^|[\s/:\"'])" + re.escape(path) + r"($|[\s:\"',])", text, re.M) is not None
 JSON_ARRAY = re.compile(r"\[[^\[\]]*\]", re.S)
 
 
@@ -102,6 +109,10 @@ def score_run(q: dict, path: Path, model: str = "haiku") -> dict:
             result = e
 
     gold = set(q["gold"])
+    grep_text = "\n".join(s["result"] for s in steps if s["name"] == "Grep")
+    grep_hits = {g for g in gold if path_listed(g, grep_text)}
+    grep_files = {line.split(":", 1)[0].strip() for line in grep_text.splitlines()
+                  if PATH_LINE.match(line.strip())}
     submitted = [rel(p, root) for p in parse_submission(result.get("result", ""))]
     reads = [rel(s["input"].get("file_path", ""), root) for s in steps if s["name"] == "Read"]
     per_call = [u["input_tokens"] + u["cache_creation_input_tokens"] + u["cache_read_input_tokens"]
@@ -131,6 +142,8 @@ def score_run(q: dict, path: Path, model: str = "haiku") -> dict:
         "submit_recall": recall(set(submitted), gold),
         "precision": precision(set(submitted), gold),
         "read_recall": recall(set(reads), gold),
+        "grep_recall": len(grep_hits) / len(gold) if gold else 0.0,
+        "grep_files_listed": len(grep_files),
         "input_tokens_sum": sum(per_call),
         "input_tokens_max": max(per_call) if per_call else 0,
         "output_tokens_sum": sum(u["output_tokens"] for u in usage_by_call.values()),

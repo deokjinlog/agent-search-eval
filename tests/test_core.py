@@ -3,7 +3,7 @@ from pathlib import Path
 from ase.bm25 import BM25, tokenize
 from ase.golden import is_code, question_text
 from ase.report import bootstrap, compare
-from ase.score import classify, parse_submission, rel
+from ase.score import classify, parse_submission, path_listed, rel
 
 
 def test_tokenize_korean_bigrams_and_split_identifiers():
@@ -64,3 +64,11 @@ def test_bootstrap_is_deterministic_and_brackets_mean():
     assert lo <= sum(diffs) / len(diffs) <= hi
     c = compare([0.1, 0.0, -0.2])
     assert (c["wins"], c["ties"], c["losses"]) == (1, 1, 1)
+
+
+def test_path_listed_matches_whole_path_lines():
+    text = "Found 2 files\nsrc/pkg/flags.py\nsrc/pkg/flags_test.py\nweb/index.html:12:  autofill()"
+    assert path_listed("src/pkg/flags.py", text)
+    assert path_listed("web/index.html", text)
+    assert not path_listed("pkg/flags.py.bak", text)
+    assert not path_listed("src/pkg/flag.py", text)
