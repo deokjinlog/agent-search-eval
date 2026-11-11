@@ -1,6 +1,6 @@
 # agent-search-eval
 
-Claude Code처럼 Grep·Glob·Read로 파일을 찾아가는 에이전트가, 단어 검색 한 번(BM25)보다 "고쳐야 할 파일"을 더 잘 찾는지 재 본 실험입니다. 질문과 정답은 개인 공개 리포의 커밋 기록으로 만들었습니다.
+Claude Code처럼 Grep·Glob·Read로 파일을 찾아가는 에이전트가, 단어 검색 한 번(BM25)보다 "고쳐야 할 파일"을 더 잘 찾는지 재 본 실험입니다. 질문과 정답은 개인 공개 리포의 커밋 기록으로 만들었습니다. 해설 글: [Grep 에이전트는 BM25보다 고칠 파일을 잘 찾을까](https://deokjin-dev.tistory.com/33)
 
 ![같은 개수를 내면 에이전트가 더 찾는다](results/recall_vs_submitted.png)
 
