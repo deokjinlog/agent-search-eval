@@ -83,6 +83,23 @@ python -m ase.chart_followup                                 # → results/follo
 4. haiku-upto5의 정답 나눔은 Grep에 떴지만 안 냄 0.254(원래 0.311), Grep에 안 뜨고 안 냄 0.095(원래 0.124)였습니다.
 5. 같은 30문항으로 arm 여러 개를 비교했으므로, 구간이 0을 겨우 넘거나 겨우 포함하는 결과는 약한 근거로 봐야 합니다.
 
+## 격리 점검 (`ase/isolation_probe.py`)
+
+에이전트 실행 전에, 같은 한 마디 질문을 격리 수준만 바꿔 헤드리스로 돌리고 `system/init`에 실린 것을 셉니다(Claude Code 2.1.322, Chrome 연동이 켜진 클라우드 세션 안에서 실행). 결과는 `results/isolation_probe.json`.
+
+| 설정 | 도구 (MCP) | MCP 서버 | 플러그인 | 스킬 | stream_event | input 토큰 |
+|---|---|---|---|---|---|---|
+| A 아무것도 안 함 | 64 (20) | 1 | 5 | 41 | 7 | 41,784 |
+| B `--tools Grep,Glob,Read`만 | 23 (20) | 1 | 5 | 41 | 7 | 17,938 |
+| C B + `--strict-mcp-config --setting-sources project --no-session-persistence` | 23 (20) | 1 | 5 | 22 | 7 | 17,931 |
+| D C + `--no-chrome` | 3 (0) | 0 | 5 | 21 | 7 | 6,372 |
+| E C + `--disallowedTools "mcp__*"` | 3 (0) | 1 | 5 | 22 | 6 | 7,803 |
+| F 실험 설정 (C + 크롬 MCP 거부 + 환경변수 제거) | 3 (0) | 0 | 5 | 21 | 0 | 6,375 |
+
+- `--tools`는 MCP 도구를 막지 않고, `--strict-mcp-config`는 내장 Chrome 연동을 막지 않습니다. 실험 설정(F)은 환경변수 제거와 거부 규칙으로 막았고, 문서에 있는 방법은 `--no-chrome`입니다.
+- 부분 메시지(stream_event)는 부모 세션에서 넘어온 환경변수 때문에 켜져 있었고, 환경변수를 빼야 꺼졌습니다.
+- 환경에 깔린 플러그인 5개는 어떤 설정에서도 남았습니다. 도구가 3개뿐이라 스킬을 부를 도구는 없지만, 완전한 격리는 아닙니다. `--bare`는 플러그인을 건너뛰지만 구독 로그인을 쓰지 않아 이 실험에서는 쓰지 않았습니다.
+
 ## 설계
 
 - 대상 리포: [should-i-still-hold-this-stock](https://github.com/deokjinlog/should-i-still-hold-this-stock), [can-this-be-redeveloped](https://github.com/deokjinlog/can-this-be-redeveloped)

@@ -1,0 +1,111 @@
+{
+  "claude_version": "2.1.322 (Claude Code)",
+  "env_set_in_parent": [
+    "CLAUDE_ADDITIONAL_DIRECTORIES",
+    "CLAUDE_CHROME_PERMISSION_MODE",
+    "CLAUDE_CODE_ADDITIONAL_DIRECTORIES_CLAUDE_MD",
+    "CLAUDE_CODE_CHROME_LATE_MCP_SERVER",
+    "CLAUDE_CODE_DIAGNOSTICS_FILE",
+    "CLAUDE_CODE_ENABLE_CFC",
+    "CLAUDE_CODE_INCLUDE_PARTIAL_MESSAGES",
+    "CLAUDE_CODE_MESSAGING_SOCKET",
+    "CLAUDE_CODE_MESSAGING_TOKEN",
+    "CLAUDE_CODE_POST_TURN_MEMORY",
+    "CLAUDE_CODE_POST_TURN_MEMORY_CONFIG",
+    "CLAUDE_CODE_SYNC_PLUGINS",
+    "CLAUDE_CODE_SYNC_SKILLS",
+    "CLAUDE_CODE_TEE_SDK_STDOUT"
+  ],
+  "cases": {
+    "A 아무것도 안 함": {
+      "tools": 64,
+      "mcp_tools": 20,
+      "mcp_servers": 1,
+      "plugins": 5,
+      "skills": 41,
+      "stream_events": 7,
+      "other_event_types": [
+        "active_goal",
+        "autocompact_state",
+        "rate_limit_event"
+      ],
+      "input_tokens_total": 41784,
+      "exit": 0
+    },
+    "B --tools만": {
+      "tools": 23,
+      "mcp_tools": 20,
+      "mcp_servers": 1,
+      "plugins": 5,
+      "skills": 41,
+      "stream_events": 7,
+      "other_event_types": [
+        "active_goal",
+        "autocompact_state",
+        "rate_limit_event"
+      ],
+      "input_tokens_total": 17938,
+      "exit": 0
+    },
+    "C B + 격리 플래그 3개": {
+      "tools": 23,
+      "mcp_tools": 20,
+      "mcp_servers": 1,
+      "plugins": 5,
+      "skills": 22,
+      "stream_events": 7,
+      "other_event_types": [
+        "active_goal",
+        "autocompact_state",
+        "rate_limit_event"
+      ],
+      "input_tokens_total": 17931,
+      "exit": 0
+    },
+    "D C + --no-chrome": {
+      "tools": 3,
+      "mcp_tools": 0,
+      "mcp_servers": 0,
+      "plugins": 5,
+      "skills": 21,
+      "stream_events": 7,
+      "other_event_types": [
+        "active_goal",
+        "autocompact_state",
+        "rate_limit_event"
+      ],
+      "input_tokens_total": 6372,
+      "exit": 0
+    },
+    "E C + --disallowedTools mcp__*": {
+      "tools": 3,
+      "mcp_tools": 0,
+      "mcp_servers": 1,
+      "plugins": 5,
+      "skills": 22,
+      "stream_events": 6,
+      "other_event_types": [
+        "active_goal",
+        "autocompact_state",
+        "rate_limit_event"
+      ],
+      "input_tokens_total": 7803,
+      "exit": 0
+    },
+    "F 실험 설정 (C + 크롬 MCP 거부 + 환경변수 제거)": {
+      "tools": 3,
+      "mcp_tools": 0,
+      "mcp_servers": 0,
+      "plugins": 5,
+      "skills": 21,
+      "stream_events": 0,
+      "other_event_types": [
+        "active_goal",
+        "autocompact_state",
+        "rate_limit_event"
+      ],
+      "input_tokens_total": 6375,
+      "exit": 0
+    }
+  }
+}
