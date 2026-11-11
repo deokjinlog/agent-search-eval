@@ -62,6 +62,24 @@ python -m ase.score --model haiku-upto5
 python -m ase.followup                                       # → results/followup.json
 ```
 
+### 후속 실험 결과 (2026-11-11, results/followup.json)
+
+| arm | Submit-Recall | Precision | 평균 제출 수 | − BM25 상위 5개 (95% 구간) |
+|---|---|---|---|---|
+| BM25 상위 5개 | 0.628 | 0.262 | 4.77 | - |
+| Haiku (위 실행) | 0.565 | 0.594 | 1.96 | −0.063 [−0.191, +0.074] |
+| haiku-upto5 | 0.651 | 0.468 | 3.00 | +0.023 [−0.098, +0.156] |
+| grep→BM25 (Haiku 실행) | 0.626 | 0.266 | 4.57 | −0.002 [−0.072, +0.061] |
+| grep→BM25 (Sonnet 실행) | 0.572 | 0.300 | 3.84 | −0.056 [−0.165, +0.054] |
+| 에이전트+채움 (Haiku) | 0.712 | 0.278 | 4.83 | +0.084 [−0.001, +0.185] |
+| 에이전트+채움 (Sonnet) | 0.746 | 0.287 | 4.83 | +0.119 [+0.024, +0.230] |
+
+1. haiku-upto5는 원래 Haiku보다 Submit-Recall이 +0.086 [+0.009, +0.174] 올랐습니다(질문별 이김 7, 비김 19, 짐 4). 평균 제출 수는 1.96개에서 3.00개로 늘고 Precision은 0.594에서 0.468로 내려갔습니다. BM25 상위 5개와의 차이는 여전히 구간이 0을 포함합니다. 추정 비용은 90번 합계 $0.59로 원래 Haiku($0.63)와 비슷했습니다.
+2. Grep 결과에 뜬 후보를 BM25 점수로 다시 고르기만 하면 BM25 상위 5개와 거의 같았습니다. 후보는 실행당 평균 Haiku 20.3개, Sonnet 11.7개였습니다.
+3. 에이전트가 낸 파일을 앞에 두고 BM25 순서로 5개까지 채우면 BM25 상위 5개보다 높았습니다. Sonnet은 구간이 0 위에 있고, Haiku는 구간 하한이 −0.001이라 0을 겨우 포함합니다. 실행 전 예상은 Sonnet에서만 맞았습니다.
+4. haiku-upto5의 정답 나눔은 Grep에 떴지만 안 냄 0.254(원래 0.311), Grep에 안 뜨고 안 냄 0.095(원래 0.124)였습니다.
+5. 같은 30문항으로 arm 여러 개를 비교했으므로, 구간이 0을 겨우 넘거나 겨우 포함하는 결과는 약한 근거로 봐야 합니다.
+
 ## 설계
 
 - 대상 리포: [should-i-still-hold-this-stock](https://github.com/deokjinlog/should-i-still-hold-this-stock), [can-this-be-redeveloped](https://github.com/deokjinlog/can-this-be-redeveloped)

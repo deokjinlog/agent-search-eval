@@ -1467,6 +1467,733 @@
           }
         }
       }
+    },
+    "haiku-upto5": {
+      "runs": 90,
+      "submit_recall": 0.6509259259259259,
+      "submit_recall_by_run": [
+        0.6527777777777778,
+        0.6277777777777778,
+        0.6722222222222223
+      ],
+      "submit_recall_run_std": 0.022280017436140706,
+      "precision": 0.4683333333333333,
+      "read_recall": 0.6472222222222223,
+      "grep_recall": 0.8703703703703703,
+      "gold_split": {
+        "submitted_grep": 0.6166666666666667,
+        "submitted_no_grep": 0.03425925925925925,
+        "grep_not_submitted": 0.2537037037037037,
+        "not_found": 0.09537037037037037
+      },
+      "grep_files_listed_median": 30.5,
+      "submitted_mean": 3.0,
+      "submitted_dist": {
+        "1": 14,
+        "2": 19,
+        "3": 25,
+        "4": 17,
+        "5": 15
+      },
+      "empty_submissions": 0,
+      "input_tokens_sum_median": 92426.5,
+      "input_tokens_max_median": 23433.0,
+      "llm_calls_mean": 6.088888888888889,
+      "tool_calls_mean": 9.044444444444444,
+      "tool_counts": {
+        "Grep": 382,
+        "Glob": 90,
+        "Read": 338
+      },
+      "duration_s_median": 17.0,
+      "cost_usd_sum": 0.5935881900000001,
+      "gold_read": 100,
+      "gold_read_not_submitted": 3,
+      "origins": {
+        "none": 4,
+        "guess": 34,
+        "obs": 50,
+        "issue": 12
+      },
+      "vs_bm25_top5": {
+        "mean": 0.023148148148148147,
+        "ci95": [
+          -0.09814814814814814,
+          0.15555555555555553
+        ],
+        "wins": 7,
+        "ties": 15,
+        "losses": 8
+      },
+      "vs_bm25_matched": {
+        "mean": 0.17314814814814816,
+        "ci95": [
+          0.039814814814814824,
+          0.3194444444444445
+        ],
+        "wins": 13,
+        "ties": 13,
+        "losses": 4
+      },
+      "bm25_matched_recall": 0.47777777777777775,
+      "slices": {
+        "has_identifier": {
+          "n": 7,
+          "bm25_top5": 0.9285714285714286,
+          "bm25_matched": 0.5238095238095238,
+          "agent": 0.8571428571428571
+        },
+        "no_identifier": {
+          "n": 23,
+          "bm25_top5": 0.5362318840579711,
+          "bm25_matched": 0.46376811594202894,
+          "agent": 0.5881642512077294
+        },
+        "gold_1": {
+          "n": 11,
+          "bm25_top5": 0.6363636363636364,
+          "bm25_matched": 0.45454545454545453,
+          "agent": 0.8181818181818182
+        },
+        "gold_2plus": {
+          "n": 19,
+          "bm25_top5": 0.6228070175438597,
+          "bm25_matched": 0.4912280701754385,
+          "agent": 0.554093567251462
+        }
+      },
+      "per_question": {
+        "can-t-4af72ef": {
+          "sr": 1.0,
+          "sr_runs": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "precision": 1.0,
+          "read_recall": 1.0,
+          "grep_recall": 1.0,
+          "submitted": 1.0,
+          "tokens_sum": 46575.666666666664,
+          "tokens_max": 17417.0,
+          "bm25_matched": 1.0,
+          "split": {
+            "submitted_grep": 1.0,
+            "submitted_no_grep": 0.0,
+            "grep_not_submitted": 0.0,
+            "not_found": 0.0
+          }
+        },
+        "can-t-6ef5d8b": {
+          "sr": 1.0,
+          "sr_runs": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "precision": 0.3333333333333333,
+          "read_recall": 1.0,
+          "grep_recall": 0.3333333333333333,
+          "submitted": 3.0,
+          "tokens_sum": 68570.0,
+          "tokens_max": 29335.0,
+          "bm25_matched": 1.0,
+          "split": {
+            "submitted_grep": 0.3333333333333333,
+            "submitted_no_grep": 0.6666666666666666,
+            "grep_not_submitted": 0.0,
+            "not_found": 0.0
+          }
+        },
+        "can-t-969b0d5": {
+          "sr": 0.5,
+          "sr_runs": [
+            0.5,
+            0.5,
+            0.5
+          ],
+          "precision": 1.0,
+          "read_recall": 0.5,
+          "grep_recall": 1.0,
+          "submitted": 1.0,
+          "tokens_sum": 68330.33333333333,
+          "tokens_max": 17705.0,
+          "bm25_matched": 0.5,
+          "split": {
+            "submitted_grep": 0.5,
+            "submitted_no_grep": 0.0,
+            "grep_not_submitted": 0.5,
+            "not_found": 0.0
+          }
+        },
+        "can-t-96c6fb2": {
+          "sr": 0.6666666666666666,
+          "sr_runs": [
+            0.6666666666666666,
+            0.6666666666666666,
+            0.6666666666666666
+          ],
+          "precision": 0.8888888888888888,
+          "read_recall": 0.5555555555555555,
+          "grep_recall": 0.7777777777777777,
+          "submitted": 2.3333333333333335,
+          "tokens_sum": 74809.33333333333,
+          "tokens_max": 18565.666666666668,
+          "bm25_matched": 0.6666666666666666,
+          "split": {
+            "submitted_grep": 0.6666666666666666,
+            "submitted_no_grep": 0.0,
+            "grep_not_submitted": 0.1111111111111111,
+            "not_found": 0.2222222222222222
+          }
+        },
+        "can-t-9f2f7f6": {
+          "sr": 0.5,
+          "sr_runs": [
+            0.5,
+            0.5,
+            0.5
+          ],
+          "precision": 0.38888888888888884,
+          "read_recall": 0.5,
+          "grep_recall": 0.6666666666666666,
+          "submitted": 2.6666666666666665,
+          "tokens_sum": 66674.66666666667,
+          "tokens_max": 23432.0,
+          "bm25_matched": 0.5,
+          "split": {
+            "submitted_grep": 0.5,
+            "submitted_no_grep": 0.0,
+            "grep_not_submitted": 0.16666666666666666,
+            "not_found": 0.3333333333333333
+          }
+        },
+        "can-t-d81b1cc": {
+          "sr": 1.0,
+          "sr_runs": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "precision": 0.8333333333333334,
+          "read_recall": 1.0,
+          "grep_recall": 1.0,
+          "submitted": 1.3333333333333333,
+          "tokens_sum": 41985.333333333336,
+          "tokens_max": 16187.666666666666,
+          "bm25_matched": 1.0,
+          "split": {
+            "submitted_grep": 1.0,
+            "submitted_no_grep": 0.0,
+            "grep_not_submitted": 0.0,
+            "not_found": 0.0
+          }
+        },
+        "can-t-f612fc8": {
+          "sr": 0.5,
+          "sr_runs": [
+            0.5,
+            0.5,
+            0.5
+          ],
+          "precision": 0.4444444444444444,
+          "read_recall": 0.6666666666666666,
+          "grep_recall": 1.0,
+          "submitted": 2.3333333333333335,
+          "tokens_sum": 87093.66666666667,
+          "tokens_max": 27516.333333333332,
+          "bm25_matched": 0.5,
+          "split": {
+            "submitted_grep": 0.5,
+            "submitted_no_grep": 0.0,
+            "grep_not_submitted": 0.5,
+            "not_found": 0.0
+          }
+        },
+        "shoul-0293df8": {
+          "sr": 0.6666666666666666,
+          "sr_runs": [
+            1.0,
+            0.0,
+            1.0
+          ],
+          "precision": 0.13333333333333333,
+          "read_recall": 1.0,
+          "grep_recall": 1.0,
+          "submitted": 3.6666666666666665,
+          "tokens_sum": 111558.66666666667,
+          "tokens_max": 30446.333333333332,
+          "bm25_matched": 0.0,
+          "split": {
+            "submitted_grep": 0.6666666666666666,
+            "submitted_no_grep": 0.0,
+            "grep_not_submitted": 0.3333333333333333,
+            "not_found": 0.0
+          }
+        },
+        "shoul-04fe079": {
+          "sr": 1.0,
+          "sr_runs": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "precision": 0.4444444444444444,
+          "read_recall": 1.0,
+          "grep_recall": 1.0,
+          "submitted": 2.3333333333333335,
+          "tokens_sum": 48168.666666666664,
+          "tokens_max": 13298.666666666666,
+          "bm25_matched": 0.0,
+          "split": {
+            "submitted_grep": 1.0,
+            "submitted_no_grep": 0.0,
+            "grep_not_submitted": 0.0,
+            "not_found": 0.0
+          }
+        },
+        "shoul-05f3d02": {
+          "sr": 0.0,
+          "sr_runs": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "precision": 0.0,
+          "read_recall": 0.0,
+          "grep_recall": 0.16666666666666666,
+          "submitted": 3.3333333333333335,
+          "tokens_sum": 103132.0,
+          "tokens_max": 28435.0,
+          "bm25_matched": 0.0,
+          "split": {
+            "submitted_grep": 0.0,
+            "submitted_no_grep": 0.0,
+            "grep_not_submitted": 0.16666666666666666,
+            "not_found": 0.8333333333333334
+          }
+        },
+        "shoul-078a110": {
+          "sr": 1.0,
+          "sr_runs": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "precision": 0.611111111111111,
+          "read_recall": 0.6666666666666666,
+          "grep_recall": 0.8333333333333334,
+          "submitted": 3.3333333333333335,
+          "tokens_sum": 103049.66666666667,
+          "tokens_max": 28306.666666666668,
+          "bm25_matched": 0.6666666666666666,
+          "split": {
+            "submitted_grep": 0.8333333333333334,
+            "submitted_no_grep": 0.16666666666666666,
+            "grep_not_submitted": 0.0,
+            "not_found": 0.0
+          }
+        },
+        "shoul-0f267e4": {
+          "sr": 0.0,
+          "sr_runs": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "precision": 0.0,
+          "read_recall": 0.0,
+          "grep_recall": 0.3333333333333333,
+          "submitted": 2.0,
+          "tokens_sum": 98262.0,
+          "tokens_max": 19479.666666666668,
+          "bm25_matched": 0.0,
+          "split": {
+            "submitted_grep": 0.0,
+            "submitted_no_grep": 0.0,
+            "grep_not_submitted": 0.3333333333333333,
+            "not_found": 0.6666666666666666
+          }
+        },
+        "shoul-229deb6": {
+          "sr": 0.5555555555555555,
+          "sr_runs": [
+            0.3333333333333333,
+            0.6666666666666666,
+            0.6666666666666666
+          ],
+          "precision": 0.5333333333333333,
+          "read_recall": 0.5555555555555555,
+          "grep_recall": 1.0,
+          "submitted": 4.0,
+          "tokens_sum": 214099.33333333334,
+          "tokens_max": 38391.0,
+          "bm25_matched": 0.3333333333333333,
+          "split": {
+            "submitted_grep": 0.5555555555555555,
+            "submitted_no_grep": 0.0,
+            "grep_not_submitted": 0.4444444444444444,
+            "not_found": 0.0
+          }
+        },
+        "shoul-2ca1c59": {
+          "sr": 1.0,
+          "sr_runs": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "precision": 1.0,
+          "read_recall": 1.0,
+          "grep_recall": 1.0,
+          "submitted": 2.0,
+          "tokens_sum": 105376.33333333333,
+          "tokens_max": 21707.0,
+          "bm25_matched": 0.5,
+          "split": {
+            "submitted_grep": 1.0,
+            "submitted_no_grep": 0.0,
+            "grep_not_submitted": 0.0,
+            "not_found": 0.0
+          }
+        },
+        "shoul-3223ea8": {
+          "sr": 0.6666666666666666,
+          "sr_runs": [
+            0.5,
+            1.0,
+            0.5
+          ],
+          "precision": 0.45555555555555555,
+          "read_recall": 0.6666666666666666,
+          "grep_recall": 1.0,
+          "submitted": 3.3333333333333335,
+          "tokens_sum": 76034.33333333333,
+          "tokens_max": 18979.666666666668,
+          "bm25_matched": 0.0,
+          "split": {
+            "submitted_grep": 0.6666666666666666,
+            "submitted_no_grep": 0.0,
+            "grep_not_submitted": 0.3333333333333333,
+            "not_found": 0.0
+          }
+        },
+        "shoul-3898455": {
+          "sr": 0.3333333333333333,
+          "sr_runs": [
+            0.0,
+            0.3333333333333333,
+            0.6666666666666666
+          ],
+          "precision": 0.3055555555555555,
+          "read_recall": 0.3333333333333333,
+          "grep_recall": 0.3333333333333333,
+          "submitted": 3.6666666666666665,
+          "tokens_sum": 83188.0,
+          "tokens_max": 25500.0,
+          "bm25_matched": 0.5555555555555555,
+          "split": {
+            "submitted_grep": 0.2222222222222222,
+            "submitted_no_grep": 0.1111111111111111,
+            "grep_not_submitted": 0.1111111111111111,
+            "not_found": 0.5555555555555555
+          }
+        },
+        "shoul-467dde0": {
+          "sr": 0.0,
+          "sr_runs": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "precision": 0.0,
+          "read_recall": 0.0,
+          "grep_recall": 1.0,
+          "submitted": 4.666666666666667,
+          "tokens_sum": 117739.33333333333,
+          "tokens_max": 27285.333333333332,
+          "bm25_matched": 0.5555555555555555,
+          "split": {
+            "submitted_grep": 0.0,
+            "submitted_no_grep": 0.0,
+            "grep_not_submitted": 1.0,
+            "not_found": 0.0
+          }
+        },
+        "shoul-4fbfb97": {
+          "sr": 1.0,
+          "sr_runs": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "precision": 0.38888888888888884,
+          "read_recall": 1.0,
+          "grep_recall": 1.0,
+          "submitted": 2.6666666666666665,
+          "tokens_sum": 77549.33333333333,
+          "tokens_max": 19556.666666666668,
+          "bm25_matched": 0.0,
+          "split": {
+            "submitted_grep": 1.0,
+            "submitted_no_grep": 0.0,
+            "grep_not_submitted": 0.0,
+            "not_found": 0.0
+          }
+        },
+        "shoul-603a2f6": {
+          "sr": 0.0,
+          "sr_runs": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "precision": 0.0,
+          "read_recall": 0.0,
+          "grep_recall": 0.8333333333333334,
+          "submitted": 4.0,
+          "tokens_sum": 275628.3333333333,
+          "tokens_max": 40511.666666666664,
+          "bm25_matched": 0.5,
+          "split": {
+            "submitted_grep": 0.0,
+            "submitted_no_grep": 0.0,
+            "grep_not_submitted": 0.8333333333333334,
+            "not_found": 0.16666666666666666
+          }
+        },
+        "shoul-764bb2e": {
+          "sr": 0.6666666666666666,
+          "sr_runs": [
+            0.6666666666666666,
+            0.6666666666666666,
+            0.6666666666666666
+          ],
+          "precision": 0.4000000000000001,
+          "read_recall": 0.6666666666666666,
+          "grep_recall": 1.0,
+          "submitted": 5.0,
+          "tokens_sum": 140656.66666666666,
+          "tokens_max": 34456.666666666664,
+          "bm25_matched": 0.3333333333333333,
+          "split": {
+            "submitted_grep": 0.6666666666666666,
+            "submitted_no_grep": 0.0,
+            "grep_not_submitted": 0.3333333333333333,
+            "not_found": 0.0
+          }
+        },
+        "shoul-834db7d": {
+          "sr": 0.6666666666666666,
+          "sr_runs": [
+            0.6666666666666666,
+            0.6666666666666666,
+            0.6666666666666666
+          ],
+          "precision": 0.7777777777777777,
+          "read_recall": 0.5555555555555555,
+          "grep_recall": 1.0,
+          "submitted": 2.6666666666666665,
+          "tokens_sum": 107950.33333333333,
+          "tokens_max": 27668.0,
+          "bm25_matched": 0.6666666666666666,
+          "split": {
+            "submitted_grep": 0.6666666666666666,
+            "submitted_no_grep": 0.0,
+            "grep_not_submitted": 0.3333333333333333,
+            "not_found": 0.0
+          }
+        },
+        "shoul-8f68eab": {
+          "sr": 1.0,
+          "sr_runs": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "precision": 0.2333333333333333,
+          "read_recall": 1.0,
+          "grep_recall": 1.0,
+          "submitted": 4.333333333333333,
+          "tokens_sum": 104374.0,
+          "tokens_max": 25139.333333333332,
+          "bm25_matched": 1.0,
+          "split": {
+            "submitted_grep": 1.0,
+            "submitted_no_grep": 0.0,
+            "grep_not_submitted": 0.0,
+            "not_found": 0.0
+          }
+        },
+        "shoul-98a1572": {
+          "sr": 0.4166666666666667,
+          "sr_runs": [
+            0.25,
+            0.5,
+            0.5
+          ],
+          "precision": 0.3833333333333333,
+          "read_recall": 0.4166666666666667,
+          "grep_recall": 0.8333333333333334,
+          "submitted": 4.333333333333333,
+          "tokens_sum": 147244.0,
+          "tokens_max": 29425.333333333332,
+          "bm25_matched": 0.3333333333333333,
+          "split": {
+            "submitted_grep": 0.3333333333333333,
+            "submitted_no_grep": 0.08333333333333333,
+            "grep_not_submitted": 0.5,
+            "not_found": 0.08333333333333333
+          }
+        },
+        "shoul-a3cd118": {
+          "sr": 1.0,
+          "sr_runs": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "precision": 0.5222222222222223,
+          "read_recall": 1.0,
+          "grep_recall": 1.0,
+          "submitted": 4.0,
+          "tokens_sum": 190671.66666666666,
+          "tokens_max": 37748.333333333336,
+          "bm25_matched": 0.6666666666666666,
+          "split": {
+            "submitted_grep": 1.0,
+            "submitted_no_grep": 0.0,
+            "grep_not_submitted": 0.0,
+            "not_found": 0.0
+          }
+        },
+        "shoul-b047742": {
+          "sr": 1.0,
+          "sr_runs": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "precision": 1.0,
+          "read_recall": 1.0,
+          "grep_recall": 1.0,
+          "submitted": 1.0,
+          "tokens_sum": 56865.666666666664,
+          "tokens_max": 17882.333333333332,
+          "bm25_matched": 0.0,
+          "split": {
+            "submitted_grep": 1.0,
+            "submitted_no_grep": 0.0,
+            "grep_not_submitted": 0.0,
+            "not_found": 0.0
+          }
+        },
+        "shoul-b264ede": {
+          "sr": 0.3333333333333333,
+          "sr_runs": [
+            1.0,
+            0.0,
+            0.0
+          ],
+          "precision": 0.08333333333333333,
+          "read_recall": 0.3333333333333333,
+          "grep_recall": 1.0,
+          "submitted": 3.6666666666666665,
+          "tokens_sum": 187639.66666666666,
+          "tokens_max": 31280.0,
+          "bm25_matched": 0.0,
+          "split": {
+            "submitted_grep": 0.3333333333333333,
+            "submitted_no_grep": 0.0,
+            "grep_not_submitted": 0.6666666666666666,
+            "not_found": 0.0
+          }
+        },
+        "shoul-cea3519": {
+          "sr": 0.8333333333333334,
+          "sr_runs": [
+            1.0,
+            0.5,
+            1.0
+          ],
+          "precision": 0.6666666666666666,
+          "read_recall": 0.8333333333333334,
+          "grep_recall": 1.0,
+          "submitted": 2.6666666666666665,
+          "tokens_sum": 80358.66666666667,
+          "tokens_max": 18891.0,
+          "bm25_matched": 0.5,
+          "split": {
+            "submitted_grep": 0.8333333333333334,
+            "submitted_no_grep": 0.0,
+            "grep_not_submitted": 0.16666666666666666,
+            "not_found": 0.0
+          }
+        },
+        "shoul-e5395a6": {
+          "sr": 1.0,
+          "sr_runs": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "precision": 0.5555555555555555,
+          "read_recall": 1.0,
+          "grep_recall": 1.0,
+          "submitted": 2.3333333333333335,
+          "tokens_sum": 70276.66666666667,
+          "tokens_max": 18065.333333333332,
+          "bm25_matched": 1.0,
+          "split": {
+            "submitted_grep": 1.0,
+            "submitted_no_grep": 0.0,
+            "grep_not_submitted": 0.0,
+            "not_found": 0.0
+          }
+        },
+        "shoul-f5f0f78": {
+          "sr": 0.2222222222222222,
+          "sr_runs": [
+            0.0,
+            0.3333333333333333,
+            0.3333333333333333
+          ],
+          "precision": 0.16666666666666666,
+          "read_recall": 0.3333333333333333,
+          "grep_recall": 1.0,
+          "submitted": 3.3333333333333335,
+          "tokens_sum": 158856.0,
+          "tokens_max": 48783.333333333336,
+          "bm25_matched": 0.5555555555555555,
+          "split": {
+            "submitted_grep": 0.2222222222222222,
+            "submitted_no_grep": 0.0,
+            "grep_not_submitted": 0.7777777777777777,
+            "not_found": 0.0
+          }
+        },
+        "shoul-fd140aa": {
+          "sr": 1.0,
+          "sr_runs": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "precision": 0.5,
+          "read_recall": 0.8333333333333334,
+          "grep_recall": 1.0,
+          "submitted": 4.0,
+          "tokens_sum": 116389.0,
+          "tokens_max": 28135.0,
+          "bm25_matched": 1.0,
+          "split": {
+            "submitted_grep": 1.0,
+            "submitted_no_grep": 0.0,
+            "grep_not_submitted": 0.0,
+            "not_found": 0.0
+          }
+        }
+      }
     }
   }
 }
