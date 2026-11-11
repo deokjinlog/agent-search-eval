@@ -1,0 +1,13 @@
+[project]
+name = "agent-search-eval"
+version = "0.1.0"
+description = "Grep 에이전트(Claude Code 헤드리스) vs BM25: 커밋 기록 골든셋으로 재는 파일 탐색 실험"
+requires-python = ">=3.11"
+dependencies = ["matplotlib>=3.8"]
+
+[project.optional-dependencies]
+dev = ["pytest>=8"]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]
