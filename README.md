@@ -42,6 +42,26 @@ Claude Code처럼 Grep·Glob·Read로 파일을 찾아가는 에이전트가, �
 
 첫째·둘째 줄의 합이 Submit-Recall, 첫째·셋째 줄의 합이 Grep-Recall입니다(`ase/report.py`의 `gold_split`, 반올림 때문에 0.001 어긋날 수 있음).
 
+## 후속 실험: 고르는 단계를 바꾸면 (5주차, 결과를 보기 전에 적음)
+
+위 결과에서 Haiku는 Grep 결과에 뜬 정답을 내지 않아 놓친 몫(0.311)이 컸습니다. 그래서 찾는 과정은 그대로 두고 고르는 단계만 바꾼 arm 세 개를 BM25 상위 5개와 비교합니다(`ase/followup.py`).
+
+| arm | 하는 일 | 새 호출 |
+|---|---|---|
+| haiku-upto5 | 프롬프트에 "고쳐야 할 파일이 여러 개일 수 있습니다. 가능성이 높은 순서대로 최대 5개까지 냅니다." 한 줄만 더함. 나머지 설정은 위와 같음 | Haiku 90번 |
+| grep→BM25 | 위 실행(Haiku, Sonnet)에서 Grep 결과에 경로로 나온 코드 파일만 후보로 두고 질문 BM25 점수 순으로 최대 5개 | 없음 |
+| 에이전트+채움 | 에이전트가 낸 파일(최대 5개)을 앞에 두고, 모자란 만큼 grep→BM25 순서, 그다음 저장소 전체 BM25 순서로 5개를 채움 | 없음 |
+
+- 주 지표: Submit-Recall. BM25 상위 5개와 질문 단위 짝 비교, 부트스트랩 95% 구간(위와 같은 시드).
+- 보조 지표: Precision, 평균 제출 수, 정답이 2개 이상인 질문 19개의 Submit-Recall, haiku-upto5와 원래 Haiku의 짝 비교.
+- 실행 전에 적은 예상: haiku-upto5는 제출 수가 늘어 원래 Haiku보다 Submit-Recall이 오를 것. 에이전트+채움은 같은 5개를 내는 BM25 상위 5개보다 높을 것. 틀리면 틀린 대로 적습니다.
+
+```bash
+python -m ase.agent --model haiku --variant upto5 --runs 3   # → runs/haiku-upto5/
+python -m ase.score --model haiku-upto5
+python -m ase.followup                                       # → results/followup.json
+```
+
 ## 설계
 
 - 대상 리포: [should-i-still-hold-this-stock](https://github.com/deokjinlog/should-i-still-hold-this-stock), [can-this-be-redeveloped](https://github.com/deokjinlog/can-this-be-redeveloped)

@@ -81,3 +81,17 @@ def test_gold_split_partitions_gold_files():
     assert abs(sum(s.values()) - 1) < 1e-9
     assert s["submitted_grep"] + s["submitted_no_grep"] == 1 / 3  # = Submit-Recall
     assert abs(s["submitted_grep"] + s["grep_not_submitted"] - 1) < 1e-9  # = Grep-Recall
+
+
+def test_followup_rerank_and_fill_keep_order_and_limit():
+    from ase.followup import fill, rerank
+    order = ["a.py", "b.py", "c.py", "d.py", "e.py", "f.py", "g.py"]
+    assert rerank({"g.py", "b.py", "x.py"}, order) == ["b.py", "g.py"]
+    assert fill(["d.py", "a.py"], ["a.py", "b.py", "c.py", "e.py"]) == ["d.py", "a.py", "b.py", "c.py", "e.py"]
+    assert fill(["a.py"] * 2 + ["b.py", "c.py", "d.py", "e.py", "f.py"], []) == ["a.py", "b.py", "c.py", "d.py", "e.py"]
+
+
+def test_upto5_prompt_differs_by_one_line():
+    from ase.agent import PROMPTS
+    base, v = PROMPTS["base"].splitlines(), PROMPTS["upto5"].splitlines()
+    assert len(v) == len(base) + 1 and set(base) <= set(v)

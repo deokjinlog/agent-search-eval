@@ -5,6 +5,7 @@ Claude Code를 헤드리스(-p)로 띄우고 도구를 Grep·Glob·Read 세 개�
 호출 기록은 stream-json으로 받아 채점에 필요한 이벤트만 runs/<model>/<qid>/r<n>.jsonl.gz 에 남긴다 (trajectory).
 
     python -m ase.agent --golden data/golden.jsonl --runs 3 --model haiku --jobs 4
+    python -m ase.agent --model haiku --variant upto5   # 5주차 후속 실험 → runs/haiku-upto5/
 """
 
 from __future__ import annotations
@@ -32,6 +33,13 @@ PROMPT = """이 폴더는 한 저장소의 특정 시점 코드입니다. 아래
 변경 요청: {question}
 """
 
+# 5주차 후속 실험: 제출 개수에 대한 문장 한 줄만 다르다.
+PROMPT_UPTO5 = PROMPT.replace(
+    "- 파일을 고치지 말고 찾기만 합니다.\n",
+    "- 파일을 고치지 말고 찾기만 합니다.\n- 고쳐야 할 파일이 여러 개일 수 있습니다. 가능성이 높은 순서대로 최대 5개까지 냅니다.\n",
+)
+PROMPTS = {"base": PROMPT, "upto5": PROMPT_UPTO5}
+
 # 바깥 세션의 메모리·플러그인·추가 폴더·메시지 채널·브라우저 도구가 실험 세션에 섞이지 않게 뺀다.
 STRIP_ENV = (
     "CLAUDE_CODE_ENABLE_CFC",
@@ -51,9 +59,9 @@ STRIP_ENV = (
 )
 
 
-def command(model: str, question: str) -> list[str]:
+def command(model: str, question: str, variant: str = "base") -> list[str]:
     return [
-        "claude", "-p", PROMPT.format(question=question),
+        "claude", "-p", PROMPTS[variant].format(question=question),
         "--model", model,
         "--tools", TOOLS,
         "--disallowedTools", "mcp__claude-in-chrome",
@@ -65,15 +73,19 @@ def command(model: str, question: str) -> list[str]:
     ]
 
 
-def run_one(q: dict, n: int, model: str) -> tuple[str, int, str]:
-    out = RUNS_DIR / model / q["qid"] / f"r{n}.jsonl"
+def arm_dir(model: str, variant: str = "base") -> str:
+    return model if variant == "base" else f"{model}-{variant}"
+
+
+def run_one(q: dict, n: int, model: str, variant: str = "base") -> tuple[str, int, str]:
+    out = RUNS_DIR / arm_dir(model, variant) / q["qid"] / f"r{n}.jsonl"
     if out.with_name(out.name + ".gz").exists() or (out.exists() and '"type":"result"' in out.read_text(encoding="utf-8")):
         return q["qid"], n, "skip"
     out.parent.mkdir(parents=True, exist_ok=True)
     env = {k: v for k, v in os.environ.items() if k not in STRIP_ENV}
     with out.open("w", encoding="utf-8") as f:
         try:
-            proc = subprocess.run(command(model, q["question"]), cwd=snapshot(q), env=env,
+            proc = subprocess.run(command(model, q["question"], variant), cwd=snapshot(q), env=env,
                                   stdout=f, stderr=subprocess.PIPE, text=True, timeout=TIMEOUT_S)
             status = "ok" if proc.returncode == 0 else f"exit {proc.returncode}: {proc.stderr[-200:]}"
         except subprocess.TimeoutExpired:
@@ -88,6 +100,7 @@ def main(argv=None) -> int:
     ap.add_argument("--runs", type=int, default=3)
     ap.add_argument("--model", default="haiku")
     ap.add_argument("--jobs", type=int, default=4)
+    ap.add_argument("--variant", choices=sorted(PROMPTS), default="base", help="프롬프트 변형 (기본 base)")
     ap.add_argument("--only", nargs="*", help="이 qid만 실행")
     args = ap.parse_args(argv)
     qs = [q for q in load_golden(args.golden) if not args.only or q["qid"] in args.only]
@@ -95,7 +108,7 @@ def main(argv=None) -> int:
         snapshot(q)
     jobs = [(q, n) for n in range(1, args.runs + 1) for q in qs]
     with ThreadPoolExecutor(args.jobs) as pool:
-        futures = [pool.submit(run_one, q, n, args.model) for q, n in jobs]
+        futures = [pool.submit(run_one, q, n, args.model, args.variant) for q, n in jobs]
         for i, fut in enumerate(as_completed(futures), 1):
             qid, n, status = fut.result()
             print(f"[{i}/{len(jobs)}] {qid} r{n} {status}", flush=True)
