@@ -56,6 +56,24 @@ def bm25_recall_at(row: dict, k: int) -> float:
     return sum(1 for r in ranks if r is not None and r <= k) / len(row["gold_ranks"])
 
 
+SPLIT_KEYS = ("submitted_grep", "submitted_no_grep", "grep_not_submitted", "not_found")
+
+
+def gold_split(gold: set, grep_hits: set, submitted: set) -> dict:
+    """정답 파일을 'Grep 결과에 떴는가 × 제출했는가'로 나눈 비율. 네 값의 합은 1 (사후 분석).
+
+    submitted_grep + submitted_no_grep = Submit-Recall, submitted_grep + grep_not_submitted = Grep-Recall.
+    grep_not_submitted는 검색 결과에 떴는데 고르지 않은 몫, not_found는 Grep에 한 번도 뜨지 않고 제출도 안 한 몫.
+    """
+    n = len(gold) or 1
+    return {
+        "submitted_grep": len(gold & grep_hits & submitted) / n,
+        "submitted_no_grep": len((gold - grep_hits) & submitted) / n,
+        "grep_not_submitted": len((gold & grep_hits) - submitted) / n,
+        "not_found": len(gold - grep_hits - submitted) / n,
+    }
+
+
 def agent_stats(golden: dict, bm25: dict, rows: list[dict]) -> dict:
     runs = defaultdict(list)
     for r in rows:
@@ -77,6 +95,8 @@ def agent_stats(golden: dict, bm25: dict, rows: list[dict]) -> dict:
             "tokens_max": mean(r["input_tokens_max"] for r in a),
             "bm25_matched": mean(bm25_recall_at(bm25[qid], max(len(r["submitted"]), 1)) for r in a),
         }
+        splits = [gold_split(set(golden[qid]["gold"]), set(r.get("grep_hits", [])), set(r["submitted"])) for r in a]
+        per_q[qid]["split"] = {k: mean(s[k] for s in splits) for k in SPLIT_KEYS}
 
     gold_read = sum(len(set(r["read"]) & set(golden[r["qid"]]["gold"])) for r in rows)
     read_not_submitted = sum(len(set(r["read"]) & set(golden[r["qid"]]["gold"]) - set(r["submitted"])) for r in rows)
@@ -96,6 +116,7 @@ def agent_stats(golden: dict, bm25: dict, rows: list[dict]) -> dict:
         "precision": mean(p["precision"] for p in per_q.values()),
         "read_recall": mean(p["read_recall"] for p in per_q.values()),
         "grep_recall": mean(p["grep_recall"] for p in per_q.values()),
+        "gold_split": {k: mean(p["split"][k] for p in per_q.values()) for k in SPLIT_KEYS},
         "grep_files_listed_median": st.median(r["grep_files_listed"] for r in rows),
         "submitted_mean": mean(p["submitted"] for p in per_q.values()),
         "submitted_dist": dict(sorted(Counter(len(r["submitted"]) for r in rows).items())),
@@ -159,6 +180,9 @@ def main(argv=None) -> int:
         print(f"    토큰 합계 중앙값 {a['input_tokens_sum_median']:,.0f}  최대값 중앙값 {a['input_tokens_max_median']:,.0f}  "
               f"호출 {a['llm_calls_mean']:.1f}  도구 {a['tool_calls_mean']:.1f} {a['tool_counts']}  시간 중앙값 {a['duration_s_median']}s  비용 합 ${a['cost_usd_sum']:.2f}")
         print(f"    읽은 정답 {a['gold_read']}건 중 제출 안 함 {a['gold_read_not_submitted']}건, 빈 제출 {a['empty_submissions']}번, 검색어 출처 {a['origins']}")
+        g = a["gold_split"]
+        print(f"    정답 나눔(사후) Grep에 뜨고 제출 {g['submitted_grep']:.3f}  Grep 밖에서 찾아 제출 {g['submitted_no_grep']:.3f}  "
+              f"Grep에 떴지만 안 냄 {g['grep_not_submitted']:.3f}  Grep에 안 뜨고 안 냄 {g['not_found']:.3f}")
         for k, v in a["slices"].items():
             print(f"      {k:15s} n={v['n']:2d}  BM25 top5 {v['bm25_top5']:.3f}  BM25 같은 개수 {v['bm25_matched']:.3f}  에이전트 {v['agent']:.3f}")
     print(f"→ {out}")

@@ -2,7 +2,7 @@ from pathlib import Path
 
 from ase.bm25 import BM25, tokenize
 from ase.golden import is_code, question_text
-from ase.report import bootstrap, compare
+from ase.report import bootstrap, compare, gold_split
 from ase.score import classify, parse_submission, path_listed, rel
 
 
@@ -72,3 +72,12 @@ def test_path_listed_matches_whole_path_lines():
     assert path_listed("web/index.html", text)
     assert not path_listed("pkg/flags.py.bak", text)
     assert not path_listed("src/pkg/flag.py", text)
+
+
+def test_gold_split_partitions_gold_files():
+    s = gold_split({"a", "b", "c", "d"}, grep_hits={"a", "b"}, submitted={"a", "c", "x"})
+    assert s == {"submitted_grep": 0.25, "submitted_no_grep": 0.25, "grep_not_submitted": 0.25, "not_found": 0.25}
+    s = gold_split({"a", "b", "c"}, grep_hits={"a", "b", "c"}, submitted={"a"})
+    assert abs(sum(s.values()) - 1) < 1e-9
+    assert s["submitted_grep"] + s["submitted_no_grep"] == 1 / 3  # = Submit-Recall
+    assert abs(s["submitted_grep"] + s["grep_not_submitted"] - 1) < 1e-9  # = Grep-Recall

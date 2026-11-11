@@ -24,6 +24,12 @@
       "precision": 0.5942857142857143,
       "read_recall": 0.6611111111111111,
       "grep_recall": 0.8537037037037037,
+      "gold_split": {
+        "submitted_grep": 0.5425925925925926,
+        "submitted_no_grep": 0.02222222222222222,
+        "grep_not_submitted": 0.3111111111111111,
+        "not_found": 0.12407407407407407
+      },
       "grep_files_listed_median": 25.0,
       "submitted_mean": 1.9555555555555555,
       "submitted_dist": {
@@ -117,7 +123,13 @@
           "submitted": 1.0,
           "tokens_sum": 34408.0,
           "tokens_max": 12061.666666666666,
-          "bm25_matched": 1.0
+          "bm25_matched": 1.0,
+          "split": {
+            "submitted_grep": 1.0,
+            "submitted_no_grep": 0.0,
+            "grep_not_submitted": 0.0,
+            "not_found": 0.0
+          }
         },
         "can-t-6ef5d8b": {
           "sr": 1.0,
@@ -132,7 +144,13 @@
           "submitted": 2.0,
           "tokens_sum": 80355.33333333333,
           "tokens_max": 31004.333333333332,
-          "bm25_matched": 1.0
+          "bm25_matched": 1.0,
+          "split": {
+            "submitted_grep": 0.3333333333333333,
+            "submitted_no_grep": 0.6666666666666666,
+            "grep_not_submitted": 0.0,
+            "not_found": 0.0
+          }
         },
         "can-t-969b0d5": {
           "sr": 0.5,
@@ -147,7 +165,13 @@
           "submitted": 1.0,
           "tokens_sum": 57071.333333333336,
           "tokens_max": 18237.333333333332,
-          "bm25_matched": 0.5
+          "bm25_matched": 0.5,
+          "split": {
+            "submitted_grep": 0.5,
+            "submitted_no_grep": 0.0,
+            "grep_not_submitted": 0.5,
+            "not_found": 0.0
+          }
         },
         "can-t-96c6fb2": {
           "sr": 0.6666666666666666,
@@ -162,7 +186,13 @@
           "submitted": 2.0,
           "tokens_sum": 88422.33333333333,
           "tokens_max": 21504.666666666668,
-          "bm25_matched": 0.6666666666666666
+          "bm25_matched": 0.6666666666666666,
+          "split": {
+            "submitted_grep": 0.6666666666666666,
+            "submitted_no_grep": 0.0,
+            "grep_not_submitted": 0.2222222222222222,
+            "not_found": 0.1111111111111111
+          }
         },
         "can-t-9f2f7f6": {
           "sr": 0.5,
@@ -177,7 +207,13 @@
           "submitted": 1.0,
           "tokens_sum": 52174.0,
           "tokens_max": 18741.666666666668,
-          "bm25_matched": 0.0
+          "bm25_matched": 0.0,
+          "split": {
+            "submitted_grep": 0.5,
+            "submitted_no_grep": 0.0,
+            "grep_not_submitted": 0.0,
+            "not_found": 0.5
+          }
         },
         "can-t-d81b1cc": {
           "sr": 1.0,
@@ -192,7 +228,13 @@
           "submitted": 1.0,
           "tokens_sum": 39375.666666666664,
           "tokens_max": 17650.0,
-          "bm25_matched": 1.0
+          "bm25_matched": 1.0,
+          "split": {
+            "submitted_grep": 1.0,
+            "submitted_no_grep": 0.0,
+            "grep_not_submitted": 0.0,
+            "not_found": 0.0
+          }
         },
         "can-t-f612fc8": {
           "sr": 0.5,
@@ -207,7 +249,13 @@
           "submitted": 2.0,
           "tokens_sum": 105316.66666666667,
           "tokens_max": 28867.0,
-          "bm25_matched": 0.5
+          "bm25_matched": 0.5,
+          "split": {
+            "submitted_grep": 0.5,
+            "submitted_no_grep": 0.0,
+            "grep_not_submitted": 0.5,
+            "not_found": 0.0
+          }
         },
         "shoul-0293df8": {
           "sr": 0.0,
@@ -222,7 +270,13 @@
           "submitted": 1.0,
           "tokens_sum": 139894.66666666666,
           "tokens_max": 26872.0,
-          "bm25_matched": 0.0
+          "bm25_matched": 0.0,
+          "split": {
+            "submitted_grep": 0.0,
+            "submitted_no_grep": 0.0,
+            "grep_not_submitted": 1.0,
+            "not_found": 0.0
+          }
         },
         "shoul-04fe079": {
           "sr": 1.0,
@@ -237,7 +291,13 @@
           "submitted": 1.0,
           "tokens_sum": 45095.666666666664,
           "tokens_max": 12417.0,
-          "bm25_matched": 0.0
+          "bm25_matched": 0.0,
+          "split": {
+            "submitted_grep": 1.0,
+            "submitted_no_grep": 0.0,
+            "grep_not_submitted": 0.0,
+            "not_found": 0.0
+          }
         },
         "shoul-05f3d02": {
           "sr": 0.0,
@@ -252,7 +312,13 @@
           "submitted": 2.3333333333333335,
           "tokens_sum": 138673.33333333334,
           "tokens_max": 38231.0,
-          "bm25_matched": 0.0
+          "bm25_matched": 0.0,
+          "split": {
+            "submitted_grep": 0.0,
+            "submitted_no_grep": 0.0,
+            "grep_not_submitted": 0.0,
+            "not_found": 1.0
+          }
         },
         "shoul-078a110": {
           "sr": 0.3333333333333333,
@@ -267,7 +333,13 @@
           "submitted": 0.6666666666666666,
           "tokens_sum": 36716.0,
           "tokens_max": 15800.333333333334,
-          "bm25_matched": 0.0
+          "bm25_matched": 0.0,
+          "split": {
+            "submitted_grep": 0.3333333333333333,
+            "submitted_no_grep": 0.0,
+            "grep_not_submitted": 0.16666666666666666,
+            "not_found": 0.5
+          }
         },
         "shoul-0f267e4": {
           "sr": 0.0,
@@ -282,7 +354,13 @@
           "submitted": 1.0,
           "tokens_sum": 79631.0,
           "tokens_max": 19723.666666666668,
-          "bm25_matched": 0.0
+          "bm25_matched": 0.0,
+          "split": {
+            "submitted_grep": 0.0,
+            "submitted_no_grep": 0.0,
+            "grep_not_submitted": 0.3333333333333333,
+            "not_found": 0.6666666666666666
+          }
         },
         "shoul-229deb6": {
           "sr": 0.6666666666666666,
@@ -297,7 +375,13 @@
           "submitted": 2.6666666666666665,
           "tokens_sum": 281274.0,
           "tokens_max": 43312.0,
-          "bm25_matched": 0.3333333333333333
+          "bm25_matched": 0.3333333333333333,
+          "split": {
+            "submitted_grep": 0.6666666666666666,
+            "submitted_no_grep": 0.0,
+            "grep_not_submitted": 0.3333333333333333,
+            "not_found": 0.0
+          }
         },
         "shoul-2ca1c59": {
           "sr": 1.0,
@@ -312,7 +396,13 @@
           "submitted": 2.0,
           "tokens_sum": 131327.33333333334,
           "tokens_max": 21825.666666666668,
-          "bm25_matched": 0.5
+          "bm25_matched": 0.5,
+          "split": {
+            "submitted_grep": 1.0,
+            "submitted_no_grep": 0.0,
+            "grep_not_submitted": 0.0,
+            "not_found": 0.0
+          }
         },
         "shoul-3223ea8": {
           "sr": 0.6666666666666666,
@@ -327,7 +417,13 @@
           "submitted": 1.6666666666666667,
           "tokens_sum": 102874.33333333333,
           "tokens_max": 22063.0,
-          "bm25_matched": 0.0
+          "bm25_matched": 0.0,
+          "split": {
+            "submitted_grep": 0.6666666666666666,
+            "submitted_no_grep": 0.0,
+            "grep_not_submitted": 0.3333333333333333,
+            "not_found": 0.0
+          }
         },
         "shoul-3898455": {
           "sr": 0.5555555555555555,
@@ -342,7 +438,13 @@
           "submitted": 3.0,
           "tokens_sum": 167462.0,
           "tokens_max": 37580.666666666664,
-          "bm25_matched": 0.3333333333333333
+          "bm25_matched": 0.3333333333333333,
+          "split": {
+            "submitted_grep": 0.5555555555555555,
+            "submitted_no_grep": 0.0,
+            "grep_not_submitted": 0.1111111111111111,
+            "not_found": 0.3333333333333333
+          }
         },
         "shoul-467dde0": {
           "sr": 0.2222222222222222,
@@ -357,7 +459,13 @@
           "submitted": 4.333333333333333,
           "tokens_sum": 157357.66666666666,
           "tokens_max": 27716.666666666668,
-          "bm25_matched": 0.3333333333333333
+          "bm25_matched": 0.3333333333333333,
+          "split": {
+            "submitted_grep": 0.2222222222222222,
+            "submitted_no_grep": 0.0,
+            "grep_not_submitted": 0.7777777777777778,
+            "not_found": 0.0
+          }
         },
         "shoul-4fbfb97": {
           "sr": 0.6666666666666666,
@@ -372,7 +480,13 @@
           "submitted": 1.6666666666666667,
           "tokens_sum": 54138.0,
           "tokens_max": 16401.666666666668,
-          "bm25_matched": 0.0
+          "bm25_matched": 0.0,
+          "split": {
+            "submitted_grep": 0.6666666666666666,
+            "submitted_no_grep": 0.0,
+            "grep_not_submitted": 0.3333333333333333,
+            "not_found": 0.0
+          }
         },
         "shoul-603a2f6": {
           "sr": 0.0,
@@ -387,7 +501,13 @@
           "submitted": 2.0,
           "tokens_sum": 276885.6666666667,
           "tokens_max": 39262.666666666664,
-          "bm25_matched": 0.5
+          "bm25_matched": 0.5,
+          "split": {
+            "submitted_grep": 0.0,
+            "submitted_no_grep": 0.0,
+            "grep_not_submitted": 0.5,
+            "not_found": 0.5
+          }
         },
         "shoul-764bb2e": {
           "sr": 0.6666666666666666,
@@ -402,7 +522,13 @@
           "submitted": 4.666666666666667,
           "tokens_sum": 209362.0,
           "tokens_max": 36845.333333333336,
-          "bm25_matched": 0.4444444444444444
+          "bm25_matched": 0.4444444444444444,
+          "split": {
+            "submitted_grep": 0.6666666666666666,
+            "submitted_no_grep": 0.0,
+            "grep_not_submitted": 0.2222222222222222,
+            "not_found": 0.1111111111111111
+          }
         },
         "shoul-834db7d": {
           "sr": 0.6666666666666666,
@@ -417,7 +543,13 @@
           "submitted": 2.0,
           "tokens_sum": 115064.66666666667,
           "tokens_max": 29621.666666666668,
-          "bm25_matched": 0.6666666666666666
+          "bm25_matched": 0.6666666666666666,
+          "split": {
+            "submitted_grep": 0.6666666666666666,
+            "submitted_no_grep": 0.0,
+            "grep_not_submitted": 0.3333333333333333,
+            "not_found": 0.0
+          }
         },
         "shoul-8f68eab": {
           "sr": 0.3333333333333333,
@@ -432,7 +564,13 @@
           "submitted": 1.6666666666666667,
           "tokens_sum": 78624.33333333333,
           "tokens_max": 23373.666666666668,
-          "bm25_matched": 1.0
+          "bm25_matched": 1.0,
+          "split": {
+            "submitted_grep": 0.3333333333333333,
+            "submitted_no_grep": 0.0,
+            "grep_not_submitted": 0.6666666666666666,
+            "not_found": 0.0
+          }
         },
         "shoul-98a1572": {
           "sr": 0.0,
@@ -447,7 +585,13 @@
           "submitted": 3.0,
           "tokens_sum": 168319.66666666666,
           "tokens_max": 35621.333333333336,
-          "bm25_matched": 0.25
+          "bm25_matched": 0.25,
+          "split": {
+            "submitted_grep": 0.0,
+            "submitted_no_grep": 0.0,
+            "grep_not_submitted": 1.0,
+            "not_found": 0.0
+          }
         },
         "shoul-a3cd118": {
           "sr": 1.0,
@@ -462,7 +606,13 @@
           "submitted": 2.0,
           "tokens_sum": 186378.33333333334,
           "tokens_max": 38633.0,
-          "bm25_matched": 0.5
+          "bm25_matched": 0.5,
+          "split": {
+            "submitted_grep": 1.0,
+            "submitted_no_grep": 0.0,
+            "grep_not_submitted": 0.0,
+            "not_found": 0.0
+          }
         },
         "shoul-b047742": {
           "sr": 1.0,
@@ -477,7 +627,13 @@
           "submitted": 1.0,
           "tokens_sum": 52283.0,
           "tokens_max": 15655.333333333334,
-          "bm25_matched": 0.0
+          "bm25_matched": 0.0,
+          "split": {
+            "submitted_grep": 1.0,
+            "submitted_no_grep": 0.0,
+            "grep_not_submitted": 0.0,
+            "not_found": 0.0
+          }
         },
         "shoul-b264ede": {
           "sr": 0.0,
@@ -492,7 +648,13 @@
           "submitted": 2.6666666666666665,
           "tokens_sum": 198593.66666666666,
           "tokens_max": 33016.0,
-          "bm25_matched": 0.0
+          "bm25_matched": 0.0,
+          "split": {
+            "submitted_grep": 0.0,
+            "submitted_no_grep": 0.0,
+            "grep_not_submitted": 1.0,
+            "not_found": 0.0
+          }
         },
         "shoul-cea3519": {
           "sr": 0.6666666666666666,
@@ -507,7 +669,13 @@
           "submitted": 1.3333333333333333,
           "tokens_sum": 107061.66666666667,
           "tokens_max": 21496.666666666668,
-          "bm25_matched": 0.5
+          "bm25_matched": 0.5,
+          "split": {
+            "submitted_grep": 0.6666666666666666,
+            "submitted_no_grep": 0.0,
+            "grep_not_submitted": 0.3333333333333333,
+            "not_found": 0.0
+          }
         },
         "shoul-e5395a6": {
           "sr": 1.0,
@@ -522,7 +690,13 @@
           "submitted": 1.0,
           "tokens_sum": 51855.333333333336,
           "tokens_max": 16145.0,
-          "bm25_matched": 1.0
+          "bm25_matched": 1.0,
+          "split": {
+            "submitted_grep": 1.0,
+            "submitted_no_grep": 0.0,
+            "grep_not_submitted": 0.0,
+            "not_found": 0.0
+          }
         },
         "shoul-f5f0f78": {
           "sr": 0.3333333333333333,
@@ -537,7 +711,13 @@
           "submitted": 2.6666666666666665,
           "tokens_sum": 161562.33333333334,
           "tokens_max": 38215.666666666664,
-          "bm25_matched": 0.4444444444444444
+          "bm25_matched": 0.4444444444444444,
+          "split": {
+            "submitted_grep": 0.3333333333333333,
+            "submitted_no_grep": 0.0,
+            "grep_not_submitted": 0.6666666666666666,
+            "not_found": 0.0
+          }
         },
         "shoul-fd140aa": {
           "sr": 1.0,
@@ -552,7 +732,13 @@
           "submitted": 3.3333333333333335,
           "tokens_sum": 173655.33333333334,
           "tokens_max": 42191.666666666664,
-          "bm25_matched": 0.6666666666666666
+          "bm25_matched": 0.6666666666666666,
+          "split": {
+            "submitted_grep": 1.0,
+            "submitted_no_grep": 0.0,
+            "grep_not_submitted": 0.0,
+            "not_found": 0.0
+          }
         }
       }
     },
@@ -568,6 +754,12 @@
       "precision": 0.6592592592592593,
       "read_recall": 0.4898148148148148,
       "grep_recall": 0.7092592592592593,
+      "gold_split": {
+        "submitted_grep": 0.4935185185185185,
+        "submitted_no_grep": 0.1,
+        "grep_not_submitted": 0.21574074074074073,
+        "not_found": 0.19074074074074074
+      },
       "grep_files_listed_median": 10.0,
       "submitted_mean": 1.5888888888888888,
       "submitted_dist": {
@@ -657,7 +849,13 @@
           "submitted": 1.0,
           "tokens_sum": 24593.333333333332,
           "tokens_max": 7887.666666666667,
-          "bm25_matched": 1.0
+          "bm25_matched": 1.0,
+          "split": {
+            "submitted_grep": 1.0,
+            "submitted_no_grep": 0.0,
+            "grep_not_submitted": 0.0,
+            "not_found": 0.0
+          }
         },
         "can-t-6ef5d8b": {
           "sr": 1.0,
@@ -672,7 +870,13 @@
           "submitted": 2.0,
           "tokens_sum": 39036.0,
           "tokens_max": 16129.333333333334,
-          "bm25_matched": 1.0
+          "bm25_matched": 1.0,
+          "split": {
+            "submitted_grep": 0.0,
+            "submitted_no_grep": 1.0,
+            "grep_not_submitted": 0.0,
+            "not_found": 0.0
+          }
         },
         "can-t-969b0d5": {
           "sr": 0.5,
@@ -687,7 +891,13 @@
           "submitted": 1.0,
           "tokens_sum": 30971.666666666668,
           "tokens_max": 8549.333333333334,
-          "bm25_matched": 0.5
+          "bm25_matched": 0.5,
+          "split": {
+            "submitted_grep": 0.3333333333333333,
+            "submitted_no_grep": 0.16666666666666666,
+            "grep_not_submitted": 0.16666666666666666,
+            "not_found": 0.3333333333333333
+          }
         },
         "can-t-96c6fb2": {
           "sr": 0.6666666666666666,
@@ -702,7 +912,13 @@
           "submitted": 2.0,
           "tokens_sum": 65187.333333333336,
           "tokens_max": 17520.666666666668,
-          "bm25_matched": 0.6666666666666666
+          "bm25_matched": 0.6666666666666666,
+          "split": {
+            "submitted_grep": 0.6666666666666666,
+            "submitted_no_grep": 0.0,
+            "grep_not_submitted": 0.0,
+            "not_found": 0.3333333333333333
+          }
         },
         "can-t-9f2f7f6": {
           "sr": 0.5,
@@ -717,7 +933,13 @@
           "submitted": 1.0,
           "tokens_sum": 21929.0,
           "tokens_max": 7907.333333333333,
-          "bm25_matched": 0.0
+          "bm25_matched": 0.0,
+          "split": {
+            "submitted_grep": 0.5,
+            "submitted_no_grep": 0.0,
+            "grep_not_submitted": 0.0,
+            "not_found": 0.5
+          }
         },
         "can-t-d81b1cc": {
           "sr": 1.0,
@@ -732,7 +954,13 @@
           "submitted": 1.0,
           "tokens_sum": 21213.0,
           "tokens_max": 7339.333333333333,
-          "bm25_matched": 1.0
+          "bm25_matched": 1.0,
+          "split": {
+            "submitted_grep": 1.0,
+            "submitted_no_grep": 0.0,
+            "grep_not_submitted": 0.0,
+            "not_found": 0.0
+          }
         },
         "can-t-f612fc8": {
           "sr": 0.5,
@@ -747,7 +975,13 @@
           "submitted": 1.6666666666666667,
           "tokens_sum": 54745.0,
           "tokens_max": 12556.333333333334,
-          "bm25_matched": 0.5
+          "bm25_matched": 0.5,
+          "split": {
+            "submitted_grep": 0.5,
+            "submitted_no_grep": 0.0,
+            "grep_not_submitted": 0.5,
+            "not_found": 0.0
+          }
         },
         "shoul-0293df8": {
           "sr": 0.0,
@@ -762,7 +996,13 @@
           "submitted": 0.3333333333333333,
           "tokens_sum": 59346.666666666664,
           "tokens_max": 14208.333333333334,
-          "bm25_matched": 0.0
+          "bm25_matched": 0.0,
+          "split": {
+            "submitted_grep": 0.0,
+            "submitted_no_grep": 0.0,
+            "grep_not_submitted": 1.0,
+            "not_found": 0.0
+          }
         },
         "shoul-04fe079": {
           "sr": 1.0,
@@ -777,7 +1017,13 @@
           "submitted": 1.6666666666666667,
           "tokens_sum": 20244.0,
           "tokens_max": 8044.666666666667,
-          "bm25_matched": 0.0
+          "bm25_matched": 0.0,
+          "split": {
+            "submitted_grep": 0.0,
+            "submitted_no_grep": 1.0,
+            "grep_not_submitted": 0.0,
+            "not_found": 0.0
+          }
         },
         "shoul-05f3d02": {
           "sr": 0.0,
@@ -792,7 +1038,13 @@
           "submitted": 3.0,
           "tokens_sum": 113147.33333333333,
           "tokens_max": 34306.666666666664,
-          "bm25_matched": 0.0
+          "bm25_matched": 0.0,
+          "split": {
+            "submitted_grep": 0.0,
+            "submitted_no_grep": 0.0,
+            "grep_not_submitted": 0.0,
+            "not_found": 1.0
+          }
         },
         "shoul-078a110": {
           "sr": 1.0,
@@ -807,7 +1059,13 @@
           "submitted": 2.0,
           "tokens_sum": 55516.666666666664,
           "tokens_max": 18102.666666666668,
-          "bm25_matched": 0.0
+          "bm25_matched": 0.0,
+          "split": {
+            "submitted_grep": 0.3333333333333333,
+            "submitted_no_grep": 0.6666666666666666,
+            "grep_not_submitted": 0.0,
+            "not_found": 0.0
+          }
         },
         "shoul-0f267e4": {
           "sr": 0.0,
@@ -822,7 +1080,13 @@
           "submitted": 1.0,
           "tokens_sum": 36393.666666666664,
           "tokens_max": 10560.0,
-          "bm25_matched": 0.0
+          "bm25_matched": 0.0,
+          "split": {
+            "submitted_grep": 0.0,
+            "submitted_no_grep": 0.0,
+            "grep_not_submitted": 0.0,
+            "not_found": 1.0
+          }
         },
         "shoul-229deb6": {
           "sr": 0.4444444444444444,
@@ -837,7 +1101,13 @@
           "submitted": 2.3333333333333335,
           "tokens_sum": 399505.6666666667,
           "tokens_max": 39006.333333333336,
-          "bm25_matched": 0.3333333333333333
+          "bm25_matched": 0.3333333333333333,
+          "split": {
+            "submitted_grep": 0.4444444444444444,
+            "submitted_no_grep": 0.0,
+            "grep_not_submitted": 0.5555555555555555,
+            "not_found": 0.0
+          }
         },
         "shoul-2ca1c59": {
           "sr": 1.0,
@@ -852,7 +1122,13 @@
           "submitted": 2.0,
           "tokens_sum": 66218.0,
           "tokens_max": 13904.0,
-          "bm25_matched": 0.5
+          "bm25_matched": 0.5,
+          "split": {
+            "submitted_grep": 0.8333333333333334,
+            "submitted_no_grep": 0.16666666666666666,
+            "grep_not_submitted": 0.0,
+            "not_found": 0.0
+          }
         },
         "shoul-3223ea8": {
           "sr": 0.5,
@@ -867,7 +1143,13 @@
           "submitted": 1.0,
           "tokens_sum": 50216.666666666664,
           "tokens_max": 16273.666666666666,
-          "bm25_matched": 0.0
+          "bm25_matched": 0.0,
+          "split": {
+            "submitted_grep": 0.5,
+            "submitted_no_grep": 0.0,
+            "grep_not_submitted": 0.5,
+            "not_found": 0.0
+          }
         },
         "shoul-3898455": {
           "sr": 0.3333333333333333,
@@ -882,7 +1164,13 @@
           "submitted": 2.3333333333333335,
           "tokens_sum": 80426.0,
           "tokens_max": 17964.0,
-          "bm25_matched": 0.3333333333333333
+          "bm25_matched": 0.3333333333333333,
+          "split": {
+            "submitted_grep": 0.3333333333333333,
+            "submitted_no_grep": 0.0,
+            "grep_not_submitted": 0.1111111111111111,
+            "not_found": 0.5555555555555555
+          }
         },
         "shoul-467dde0": {
           "sr": 0.0,
@@ -897,7 +1185,13 @@
           "submitted": 1.3333333333333333,
           "tokens_sum": 27576.0,
           "tokens_max": 8787.0,
-          "bm25_matched": 0.0
+          "bm25_matched": 0.0,
+          "split": {
+            "submitted_grep": 0.0,
+            "submitted_no_grep": 0.0,
+            "grep_not_submitted": 0.3333333333333333,
+            "not_found": 0.6666666666666666
+          }
         },
         "shoul-4fbfb97": {
           "sr": 1.0,
@@ -912,7 +1206,13 @@
           "submitted": 1.0,
           "tokens_sum": 31182.666666666668,
           "tokens_max": 9899.666666666666,
-          "bm25_matched": 0.0
+          "bm25_matched": 0.0,
+          "split": {
+            "submitted_grep": 1.0,
+            "submitted_no_grep": 0.0,
+            "grep_not_submitted": 0.0,
+            "not_found": 0.0
+          }
         },
         "shoul-603a2f6": {
           "sr": 0.0,
@@ -927,7 +1227,13 @@
           "submitted": 2.0,
           "tokens_sum": 114141.0,
           "tokens_max": 22025.333333333332,
-          "bm25_matched": 0.5
+          "bm25_matched": 0.5,
+          "split": {
+            "submitted_grep": 0.0,
+            "submitted_no_grep": 0.0,
+            "grep_not_submitted": 0.5,
+            "not_found": 0.5
+          }
         },
         "shoul-764bb2e": {
           "sr": 0.6666666666666666,
@@ -942,7 +1248,13 @@
           "submitted": 2.3333333333333335,
           "tokens_sum": 68679.0,
           "tokens_max": 13541.666666666666,
-          "bm25_matched": 0.0
+          "bm25_matched": 0.0,
+          "split": {
+            "submitted_grep": 0.6666666666666666,
+            "submitted_no_grep": 0.0,
+            "grep_not_submitted": 0.1111111111111111,
+            "not_found": 0.2222222222222222
+          }
         },
         "shoul-834db7d": {
           "sr": 0.4444444444444444,
@@ -957,7 +1269,13 @@
           "submitted": 1.6666666666666667,
           "tokens_sum": 70886.33333333333,
           "tokens_max": 13597.666666666666,
-          "bm25_matched": 0.5555555555555555
+          "bm25_matched": 0.5555555555555555,
+          "split": {
+            "submitted_grep": 0.4444444444444444,
+            "submitted_no_grep": 0.0,
+            "grep_not_submitted": 0.4444444444444444,
+            "not_found": 0.1111111111111111
+          }
         },
         "shoul-8f68eab": {
           "sr": 1.0,
@@ -972,7 +1290,13 @@
           "submitted": 2.3333333333333335,
           "tokens_sum": 69488.33333333333,
           "tokens_max": 17112.333333333332,
-          "bm25_matched": 1.0
+          "bm25_matched": 1.0,
+          "split": {
+            "submitted_grep": 1.0,
+            "submitted_no_grep": 0.0,
+            "grep_not_submitted": 0.0,
+            "not_found": 0.0
+          }
         },
         "shoul-98a1572": {
           "sr": 0.08333333333333333,
@@ -987,7 +1311,13 @@
           "submitted": 1.3333333333333333,
           "tokens_sum": 63552.333333333336,
           "tokens_max": 14244.0,
-          "bm25_matched": 0.25
+          "bm25_matched": 0.25,
+          "split": {
+            "submitted_grep": 0.08333333333333333,
+            "submitted_no_grep": 0.0,
+            "grep_not_submitted": 0.9166666666666666,
+            "not_found": 0.0
+          }
         },
         "shoul-a3cd118": {
           "sr": 1.0,
@@ -1002,7 +1332,13 @@
           "submitted": 2.0,
           "tokens_sum": 41846.666666666664,
           "tokens_max": 11382.0,
-          "bm25_matched": 0.5
+          "bm25_matched": 0.5,
+          "split": {
+            "submitted_grep": 1.0,
+            "submitted_no_grep": 0.0,
+            "grep_not_submitted": 0.0,
+            "not_found": 0.0
+          }
         },
         "shoul-b047742": {
           "sr": 1.0,
@@ -1017,7 +1353,13 @@
           "submitted": 1.0,
           "tokens_sum": 33353.333333333336,
           "tokens_max": 10031.666666666666,
-          "bm25_matched": 0.0
+          "bm25_matched": 0.0,
+          "split": {
+            "submitted_grep": 1.0,
+            "submitted_no_grep": 0.0,
+            "grep_not_submitted": 0.0,
+            "not_found": 0.0
+          }
         },
         "shoul-b264ede": {
           "sr": 0.3333333333333333,
@@ -1032,7 +1374,13 @@
           "submitted": 1.6666666666666667,
           "tokens_sum": 106910.66666666667,
           "tokens_max": 21324.666666666668,
-          "bm25_matched": 0.0
+          "bm25_matched": 0.0,
+          "split": {
+            "submitted_grep": 0.3333333333333333,
+            "submitted_no_grep": 0.0,
+            "grep_not_submitted": 0.3333333333333333,
+            "not_found": 0.3333333333333333
+          }
         },
         "shoul-cea3519": {
           "sr": 0.5,
@@ -1047,7 +1395,13 @@
           "submitted": 1.0,
           "tokens_sum": 43958.0,
           "tokens_max": 9744.333333333334,
-          "bm25_matched": 0.5
+          "bm25_matched": 0.5,
+          "split": {
+            "submitted_grep": 0.5,
+            "submitted_no_grep": 0.0,
+            "grep_not_submitted": 0.3333333333333333,
+            "not_found": 0.16666666666666666
+          }
         },
         "shoul-e5395a6": {
           "sr": 1.0,
@@ -1062,7 +1416,13 @@
           "submitted": 1.0,
           "tokens_sum": 31757.0,
           "tokens_max": 9937.333333333334,
-          "bm25_matched": 1.0
+          "bm25_matched": 1.0,
+          "split": {
+            "submitted_grep": 1.0,
+            "submitted_no_grep": 0.0,
+            "grep_not_submitted": 0.0,
+            "not_found": 0.0
+          }
         },
         "shoul-f5f0f78": {
           "sr": 0.3333333333333333,
@@ -1077,7 +1437,13 @@
           "submitted": 1.6666666666666667,
           "tokens_sum": 68121.33333333333,
           "tokens_max": 17435.333333333332,
-          "bm25_matched": 0.3333333333333333
+          "bm25_matched": 0.3333333333333333,
+          "split": {
+            "submitted_grep": 0.3333333333333333,
+            "submitted_no_grep": 0.0,
+            "grep_not_submitted": 0.6666666666666666,
+            "not_found": 0.0
+          }
         },
         "shoul-fd140aa": {
           "sr": 1.0,
@@ -1092,7 +1458,13 @@
           "submitted": 2.0,
           "tokens_sum": 81202.0,
           "tokens_max": 17556.666666666668,
-          "bm25_matched": 0.0
+          "bm25_matched": 0.0,
+          "split": {
+            "submitted_grep": 1.0,
+            "submitted_no_grep": 0.0,
+            "grep_not_submitted": 0.0,
+            "not_found": 0.0
+          }
         }
       }
     }

@@ -143,6 +143,7 @@ def score_run(q: dict, path: Path, model: str = "haiku") -> dict:
         "precision": precision(set(submitted), gold),
         "read_recall": recall(set(reads), gold),
         "grep_recall": len(grep_hits) / len(gold) if gold else 0.0,
+        "grep_hits": sorted(grep_hits),
         "grep_files_listed": len(grep_files),
         "input_tokens_sum": sum(per_call),
         "input_tokens_max": max(per_call) if per_call else 0,
