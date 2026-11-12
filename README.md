@@ -126,6 +126,19 @@ python -m ase.chart_followup                                 # → results/follo
 - 비용은 Claude Code가 계산한 추정값(`total_cost_usd`)입니다. 구독 사용량과 같지 않습니다. 90번 실행 합계 Haiku $0.63, Sonnet $5.45.
 - 실행이 질문당 3번이라 흔들림 추정이 거칩니다.
 
+## 관련 연구 (2026-11-12 추가)
+
+이슈를 보고 고칠 파일을 찾는 문제(code localization)는 영어 벤치마크에서 더 큰 규모로 이미 쟀습니다. 이 리포의 숫자와는 질문 언어, 정답 파일 수, 지표가 달라 바로 비교할 수 없습니다.
+
+| 연구 | 데이터 | 결과 |
+|---|---|---|
+| [LocAgent](https://arxiv.org/abs/2503.09089) (Chen 외, 2025) | SWE-Bench-Lite 274문제(정답 파일 1개), 파일 단위 Acc@5(%) | BM25 61.68, 코드 임베딩 CodeRankEmbed 84.67, SWE-agent·OpenHands(Claude 3.5) 90.15, LocAgent(Claude 3.5) 94.16 |
+| [Improving agent with semantic search](https://cursor.com/blog/semsearch) (Cursor, 2025) | 자체 벤치마크 Cursor Context Bench | grep에 의미 검색을 더하자 정확도가 평균 12.5% 높았고(모델별 6.5~23.5%), 둘을 같이 쓸 때 가장 좋았음 |
+| [Reformulate, Retrieve, Localize](https://arxiv.org/abs/2512.07022) (Caumartin, Melo) | Long Code Arena 버그 위치 찾기 | 버그 리포트에서 식별자와 코드 조각을 뽑아 다시 쓴 질문으로 BM25 Hit@1 0.320 → 0.447 |
+| [Is Grep All You Need?](https://arxiv.org/abs/2605.15184) (Sen 외, 2026) | LongMemEval 116문제(대화 기록, 코드 아님) | grep이 대체로 벡터 검색보다 높았고, 같은 데이터라도 하네스(Claude Code, Codex, Gemini CLI 등)에 따라 점수가 크게 달라짐 |
+
+이 리포가 따로 본 것은 한국어로 쓴 짧은 질문(커밋 제목)과 영어 코드 사이의 차이입니다. 질문에 코드와 같은 영문 단어가 있는 7개에서는 BM25 상위 5개가 0.929, 한국어로만 쓴 23개에서는 0.536이었습니다. 위 연구에서 코드 임베딩이 BM25보다 높았던 만큼, 빠진 Vector RAG arm이 이 리포의 결론을 바꿀 수 있습니다.
+
 ## 다시 돌리기
 
 ```bash
