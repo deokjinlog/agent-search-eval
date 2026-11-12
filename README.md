@@ -83,6 +83,32 @@ python -m ase.chart_followup                                 # → results/follo
 4. haiku-upto5의 정답 나눔은 Grep에 떴지만 안 냄 0.254(원래 0.311), Grep에 안 뜨고 안 냄 0.095(원래 0.124)였습니다.
 5. 같은 30문항으로 arm 여러 개를 비교했으므로, 구간이 0을 겨우 넘거나 겨우 포함하는 결과는 약한 근거로 봐야 합니다.
 
+## 후속 실험 2: 한국어 질문을 영어 코드와 잇기 (결과를 보기 전에 적음, 2026-11-12)
+
+한국어로만 쓴 질문 23개에서는 BM25 상위 5개 0.536, Haiku 0.498, Sonnet 0.528로 모두 낮았습니다. 질문은 한국어, 코드는 영어라 겹치는 단어가 없기 때문으로 봅니다. 이 간극을 메우는 두 방법을 BM25 상위 5개(`results/bm25.jsonl`)와 비교합니다(`ase/followup2.py`).
+
+| arm | 하는 일 | 새 호출 | 상태 |
+|---|---|---|---|
+| rewrite-haiku (주 arm) | Haiku가 질문만 보고 코드에 나올 법한 영어 식별자·키워드 10~20개를 추측. BM25 질문 = 원래 질문 + 추측한 단어, 상위 5개. 도구 없음(`--tools ""`), 빈 임시 폴더, 에이전트 arm과 같은 격리 플래그. 질문마다 3번 | Haiku 90번 (도구 없는 한 턴) | 이 환경에서 실행 |
+| vector | 다국어 임베딩 BAAI/bge-m3(dense). 파일을 60줄 창, 40줄 간격으로 자르고 조각마다 파일 경로를 붙임. 파일 점수 = 조각 코사인 유사도 최댓값, 상위 5개 | 없음 (로컬 임베딩) | 대기: 이 환경에 모델이 없고 내려받기가 막혀 있음 |
+| hybrid (보조) | BM25 순위와 vector 순위를 RRF(k=60)로 합쳐 상위 5개 | 없음 | vector와 함께 |
+
+- 주 지표: 한국어로만 쓴 23문항의 Submit-Recall, BM25 상위 5개와 질문 단위 짝 비교, 부트스트랩 95% 구간(위와 같은 시드). 30문항 전체도 같이 적습니다.
+- 질문 속성(has_identifier)은 4주차 실험 전에 붙인 것을 그대로 씁니다.
+- 실행 전에 적은 예상:
+  1. rewrite-haiku는 한국어로만 쓴 23문항에서 BM25 상위 5개보다 높을 것(구간이 0 위).
+  2. rewrite-haiku는 영문 단어가 있는 7문항에서는 차이가 작을 것(이미 0.929).
+  3. vector는 한국어로만 쓴 23문항에서 BM25 상위 5개보다 높을 것.
+  4. hybrid는 30문항 전체에서 BM25 상위 5개보다 높을 것.
+- 비용은 rewrite-haiku만 Claude Code 추정 비용 합계로 적습니다(`results/rewrite_haiku_cost.json`).
+
+```bash
+python -m ase.rewrite --model haiku --runs 3   # → results/rewrite_haiku.jsonl
+pip install sentence-transformers              # 네트워크가 되는 곳에서
+python -m ase.vector --model BAAI/bge-m3       # → results/vector.jsonl, results/hybrid.jsonl
+python -m ase.followup2                        # → results/followup2.json
+```
+
 ## 격리 점검 (`ase/isolation_probe.py`)
 
 에이전트 실행 전에, 같은 한 마디 질문을 격리 수준만 바꿔 헤드리스로 돌리고 `system/init`에 실린 것을 셉니다(Claude Code 2.1.322, Chrome 연동이 켜진 클라우드 세션 안에서 실행). 결과는 `results/isolation_probe.json`.
